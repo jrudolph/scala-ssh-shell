@@ -40,23 +40,23 @@ Note that the shell does not work when running under sbt's console.
 
 To run the included example, run the following with sbt 0.7:
 
-   $ sbt update
-   $ sbt compile
-   $ sbt package
-   $ scala -cp './lib_managed/scala_2.9.1/compile/*:./target/scala_2.9.1/scala-ssh-shell_2.9.1-0.1.jar' peak6.util.ScalaSshShell
+    $ sbt update
+    $ sbt compile
+    $ sbt package
+    $ scala -cp './lib_managed/scala_2.9.1/compile/*:./target/scala_2.9.1/scala-ssh-shell_2.9.1-0.1.jar' peak6.util.ScalaSshShell
 
 Now you can ssh in from a separate window, using "fluke" for the
 password:
 
-   $ ssh -l user -p 4444 localhost
-   user@localhost's password:
-   Connected to test, starting repl...
-   Welcome to Scala version 2.9.1.r0-b20110831114755 (Java HotSpot(TM) 64-Bit Server VM, Java 1.7.0).
-   Type in expressions to have them evaluated.
-   Type :help for more information.
-   test> nums.sum
-   res0: Int = 15
-   test> pi/2
-   res1: Double = 1.5707963
-   test> println("Hello World!")
-   Hello World!
+    $ ssh -l user -p 4444 localhost
+    user@localhost's password:
+    Connected to test, starting repl...
+    Welcome to Scala version 2.9.1.r0-b20110831114755 (Java HotSpot(TM) 64-Bit Server VM, Java 1.7.0).
+    Type in expressions to have them evaluated.
+    Type :help for more information.
+    test> nums.sum
+    res0: Int = 15
+    test> pi/2
+    res1: Double = 1.5707963
+    test> println("Hello World!")
+    Hello World!
