@@ -21,11 +21,17 @@ import java.io.{BufferedReader, InputStreamReader, PrintWriter}
 import org.apache.sshd.server.session.ServerSession
 import org.apache.sshd.common.keyprovider.AbstractKeyPairProvider
 import org.apache.sshd.server.keyprovider.SimpleGeneratorHostKeyProvider
+import scala.reflect.Manifest
 
 class ScalaSshShell(port: Int, name:
                     String, user: String, passwd: String,
-                    keysResourcePath: Option[String],
-                    bindings: Seq[(String, String, Any)] = IndexedSeq()) {
+                    keysResourcePath: Option[String]) {
+  var bindings: Seq[(String, String, Any)] = IndexedSeq()
+
+  def bind[T: Manifest](name: String, value: T) {
+    bindings :+= (name, manifest[T].toString, value)
+  }
+
   val sshd = org.apache.sshd.SshServer.setUpDefaultServer()
   sshd.setPort(port)
   sshd.setReuseAddress(true)
@@ -181,11 +187,9 @@ object ScalaSshShell {
   def main(args: Array[String]) {
     val sshd = new ScalaSshShell(port=4444, name="test", user="user",
                                  passwd="fluke",
-                                 keysResourcePath=Some("/test.ssh.keys"),
-                                 IndexedSeq(
-                                   ("pi", "Double", 3.1415926),
-                                   ("nums", "IndexedSeq[Int]",
-                                    Vector(1,2,3,4,5))))
+                                 keysResourcePath=Some("/test.ssh.keys"))
+    sshd.bind("pi", 3.1415926)
+    sshd.bind("nums", Vector(1,2,3,4,5))
   }
 
   def generateKeys(path: String) {
