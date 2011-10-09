@@ -25,7 +25,7 @@ import org.apache.sshd.server.keyprovider.SimpleGeneratorHostKeyProvider
 class ScalaSshShell(port: Int, name:
                     String, user: String, passwd: String,
                     keysResourcePath: Option[String],
-                    bindings: Seq[(String, String, Any)]) {
+                    bindings: Seq[(String, String, Any)] = IndexedSeq()) {
   val sshd = org.apache.sshd.SshServer.setUpDefaultServer()
   sshd.setPort(port)
   sshd.setReuseAddress(true)
