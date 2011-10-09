@@ -1,9 +1,15 @@
+scala-ssh-shell
+===============
+
 Backdoor that gives you a scala shell over ssh on your jvm
 
 NOTE: The shell is not sandboxed, anyone access the shell can touch
 anything in the jvm and do anything the jvm can do including modifying
 and deleting files, etc. Use at your own risk. No guarantees are made
 regarding this being secure.
+
+Usage
+-----
 
 Embed this in your code by running the following:
 
