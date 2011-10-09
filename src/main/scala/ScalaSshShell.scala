@@ -176,7 +176,10 @@ class ScalaSshShell(port: Int, name:
           }
         }
     })
-  sshd.start()
+
+  def start() {
+    sshd.start()
+  }
 
   def stop() {
     sshd.stop()
@@ -190,6 +193,7 @@ object ScalaSshShell {
                                  keysResourcePath=Some("/test.ssh.keys"))
     sshd.bind("pi", 3.1415926)
     sshd.bind("nums", Vector(1,2,3,4,5))
+    sshd.start()
   }
 
   def generateKeys(path: String) {
