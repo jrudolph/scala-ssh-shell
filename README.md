@@ -34,7 +34,7 @@ To shut down ssh service, call:
 To generate your keys run ScalaSshShell.generateKeys(), which can be
 done from a scala shell:
 
-    scala> peak6.util.ScalaSshShell.generateKey("src/main/resources/test.ssh.keys")
+    scala> peak6.util.ScalaSshShell.generateKeys("src/main/resources/test.ssh.keys")
 
 Note that the shell does not work when running under sbt's console.
 
