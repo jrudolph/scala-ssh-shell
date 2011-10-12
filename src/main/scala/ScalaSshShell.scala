@@ -129,7 +129,6 @@ class ScalaSshShell(port: Int, name:
               val il = new scala.tools.nsc.interpreter.SshILoop(None, pw)
               il.setPrompt(name + "> ")
               il.settings = new scala.tools.nsc.Settings()
-              il.settings.usejavacp.value = true
               il.settings.embeddedDefaults(
                 Thread.currentThread.getContextClassLoader)
               il.settings.classpath.value =
